@@ -14,6 +14,6 @@ class CustomTemplateProcessor(JinjaTemplateProcessor):
         }
         
     def current_user_position_id(self) -> Optional[str]:
-        access_token = request.cookies.get('session')
-        print(access_token)
+        access_token = request.cookies.get('oidc_id_token')
+        print('OIDC ACCESS TOKEN ----------------------------------' + access_token)
         return 53
