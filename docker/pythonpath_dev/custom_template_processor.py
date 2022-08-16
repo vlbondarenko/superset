@@ -15,6 +15,7 @@ class CustomTemplateProcessor(JinjaTemplateProcessor):
         }
         
     def current_user_position_id(self) -> Optional[str]:
+        jwt_required()
         access_token = get_current_user()
         print('OIDC ACCESS TOKEN ----------------------------------' + access_token)
         return 53
