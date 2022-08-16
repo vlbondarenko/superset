@@ -27,6 +27,7 @@ from typing import Optional
 
 from cachelib.file import FileSystemCache
 from celery.schedules import crontab
+from docker.pythonpath_dev.custom_template_processor import CustomTemplateProcessor
 from flask_appbuilder.security.manager import AUTH_OID
 from customSecurity import OIDCSecurityManager 
 
@@ -131,4 +132,8 @@ OIDC_SCOPES = ['openid']
 OIDC_OPENID_REALM = 'master'
 FEATURE_FLAGS = {
     "ENABLE_TEMPLATE_PROCESSING": True
+}
+
+CUSTOM_TEMPLATE_PROCESSORS = {
+    CustomTemplateProcessor.engine: CustomTemplateProcessor
 }
