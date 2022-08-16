@@ -27,6 +27,8 @@ from typing import Optional
 
 from cachelib.file import FileSystemCache
 from celery.schedules import crontab
+from flask_appbuilder.security.manager import AUTH_OID
+from customSecurity import OIDCSecurityManager 
 
 logger = logging.getLogger()
 
@@ -112,3 +114,18 @@ try:
     )
 except ImportError:
     logger.info("Using default Docker config...")
+    
+    
+curr = os.path.abspath(os.getcwd())
+AUTH_TYPE = AUTH_OID
+OIDC_CLIENT_SECRETS = curr + '/docker/pythonpath_dev/client_secret.json'
+OIDC_ID_TOKEN_COOKIE_SECURE = False
+OIDC_REQUIRE_VERIFIED_EMAIL = False
+OIDC_CLOCK_SKEW = 560
+AUTH_USER_REGISTRATION = True
+AUTH_USER_REGISTRATION_ROLE = 'Gamma'
+CUSTOM_SECURITY_MANAGER = OIDCSecurityManager
+OIDC_INTROSPECTION_AUTH_METHOD = 'client_secret_post'
+OIDC_TOKEN_TYPE_HINT = 'access_token'
+OIDC_SCOPES = ['openid']
+OIDC_OPENID_REALM = 'master'
