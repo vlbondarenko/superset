@@ -15,7 +15,7 @@ class AuthOIDCView(AuthOIDView):
         sm = self.appbuilder.sm
         oidc = sm.oid
         superset_roles = ["Admin", "Alpha", "Gamma", "Public", "granter", "sql_lab"]
-        default_role = "Gamma"
+        default_role = "Admin"
 
         @self.appbuilder.sm.oid.require_login
         def handle_login():
@@ -28,7 +28,6 @@ class AuthOIDCView(AuthOIDView):
                 user = sm.add_user(info.get('preferred_username'), info.get('given_name', ''), info.get('family_name', ''),
                                    info.get('email'), [sm.find_role(role) for role in roles])
                 
-                print(f"Loaded your LOCAL configuration at [{user}]")
                 print(f"{info.get('positionId')}")
 
             login_user(user, remember=False)
