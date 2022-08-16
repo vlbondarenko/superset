@@ -129,3 +129,6 @@ OIDC_INTROSPECTION_AUTH_METHOD = 'client_secret_post'
 OIDC_TOKEN_TYPE_HINT = 'access_token'
 OIDC_SCOPES = ['openid']
 OIDC_OPENID_REALM = 'master'
+FEATURE_FLAGS = {
+    "ENABLE_TEMPLATE_PROCESSING": True
+}
