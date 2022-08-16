@@ -133,7 +133,6 @@ OIDC_OPENID_REALM = 'master'
 FEATURE_FLAGS = {
     "ENABLE_TEMPLATE_PROCESSING": True
 }
-
 CUSTOM_TEMPLATE_PROCESSORS = {
     CustomTemplateProcessor.engine: CustomTemplateProcessor
 }
