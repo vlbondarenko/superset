@@ -4,6 +4,8 @@ from superset.jinja_context import JinjaTemplateProcessor, safe_proxy
 from flask import request
 from flask_jwt_extended import decode_token, jwt_required, current_user, get_current_user
 from flask_appbuilder.security.views import AuthOIDView
+from customSecurity import OIDCSecurityManager
+from flask import current_app as app
 
 
 class CustomTemplateProcessor(JinjaTemplateProcessor):
@@ -16,8 +18,7 @@ class CustomTemplateProcessor(JinjaTemplateProcessor):
         }
         
     def current_user_position_id(self) -> Optional[str]:
-        au = AuthOIDView()
-        sm = au.appbuilder.sm
+        sm = OIDCSecurityManager(app)
         oidc = sm.oid
         info = oidc.user_getinfo(['preferred_username', 'given_name', 'family_name', 'email', 'positionId'])
         print(oidc)
