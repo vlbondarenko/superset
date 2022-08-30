@@ -1,6 +1,6 @@
 from array import array
 from functools import partial
-from typing import Any, Optional
+from typing import Any, Iterable, Optional
 from superset.jinja_context import JinjaTemplateProcessor, safe_proxy
 from superset import security_manager
 
@@ -21,12 +21,12 @@ class CustomTemplateProcessor(JinjaTemplateProcessor):
         info = oidc.user_getinfo(['distributorId'])
         return info.get('distributorId')
     
-    def current_user_regions(self) -> array[int]:
+    def current_user_regions(self) -> Iterable[int]:
         oidc = security_manager.oid
         info = oidc.user_getinfo(['regions'])
         return info.get('regions')
     
-    def current_user_segments(self) -> array[int]:
+    def current_user_segments(self) -> Iterable[int]:
         oidc = security_manager.oid
         info = oidc.user_getinfo(['segments'])
         return info.get('segments')
