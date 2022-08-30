@@ -24,7 +24,8 @@ class CustomTemplateProcessor(JinjaTemplateProcessor):
     def current_user_regions(self) -> Iterable[str]:
         oidc = security_manager.oid
         info = oidc.user_getinfo(['regions'])
-        return info.get('regions')
+        regions = info.get('regions')
+        return array(map(str, regions))
     
     def current_user_segments(self) -> Iterable[int]:
         oidc = security_manager.oid
