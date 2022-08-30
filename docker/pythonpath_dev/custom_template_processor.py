@@ -34,4 +34,5 @@ class CustomTemplateProcessor(JinjaTemplateProcessor):
     def current_user_segments(self):
         oidc = security_manager.oid
         info = oidc.user_getinfo(['segments'])
-        return map(str,info.get('segments'))
+        segments = info.get('segments')
+        return [str(segment) for segment in segments]
