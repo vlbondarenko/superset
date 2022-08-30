@@ -26,6 +26,7 @@ class CustomTemplateProcessor(JinjaTemplateProcessor):
         oidc = security_manager.oid
         info = oidc.user_getinfo(['regions'])
         regions = info.get('regions')
+        print('Type OF REGIONS ____________________________________' + type(regions))
         strRegions = List[str]
         for region in regions:
             strRegions.insert(str(region), 0)
