@@ -26,10 +26,7 @@ class CustomTemplateProcessor(JinjaTemplateProcessor):
         oidc = security_manager.oid
         info = oidc.user_getinfo(['regions'])
         regions = info.get('regions')
-        strRegions = []
-        for region in regions:
-            strRegions.append(str(region))
-        return strRegions
+        return [str(region) for region in regions]
     
     def current_user_segments(self):
         oidc = security_manager.oid
