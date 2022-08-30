@@ -1,7 +1,5 @@
-from array import array
 from functools import partial
-from traceback import format_exc
-from typing import Any, Iterable, List, Optional
+from typing import Any, Optional
 from superset.jinja_context import JinjaTemplateProcessor, safe_proxy
 from superset import security_manager
 
