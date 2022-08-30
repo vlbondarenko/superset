@@ -29,6 +29,7 @@ class CustomTemplateProcessor(JinjaTemplateProcessor):
         print("TYPE ____________________________________________________________ :", type(regions))
         strRegions = List[str]
         for region in regions:
+            print("ELEMENT TYPE ____________________________________________________________ :", type(region))
             strRegions.insert(str(region), 0)
         return strRegions
     
