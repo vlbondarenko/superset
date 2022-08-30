@@ -22,15 +22,16 @@ class CustomTemplateProcessor(JinjaTemplateProcessor):
         info = oidc.user_getinfo(['distributorId'])
         return info.get('distributorId')
     
-    def current_user_regions(self) -> List[str]:
+    def current_user_regions(self):
         oidc = security_manager.oid
         info = oidc.user_getinfo(['regions'])
         regions = info.get('regions')
         print("TYPE ____________________________________________________________ :", type(regions))
-        strRegions = List[str]
+        strRegions = []
         for region in regions:
             print("ELEMENT TYPE ____________________________________________________________ :", type(region))
-            strRegions.insert(str(region), 0)
+            strRegions.append(str(region))           
+        print("RESULT TYPE ____________________________________________________________ :", type(strRegions), type(strRegions[0]))
         return strRegions
     
     def current_user_segments(self) -> Iterable[int]:
