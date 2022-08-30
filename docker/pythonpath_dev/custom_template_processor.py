@@ -28,7 +28,7 @@ class CustomTemplateProcessor(JinjaTemplateProcessor):
         regions = info.get('regions')
         strRegions = List[str]
         for region in regions:
-            strRegions.append(str(region))
+            strRegions.insert(str(region), 0)
         return strRegions
     
     def current_user_segments(self) -> Iterable[int]:
